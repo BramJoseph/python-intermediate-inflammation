@@ -74,3 +74,14 @@ def test_daily_max_integers():
 
     # Need to use Numpy testing functions to compare arrays
     npt.assert_array_equal(daily_max(test_input), test_result)
+
+
+@pytest.mark.parametrize(
+        "test_input, test_result",
+        [
+            ([ [0, 0, 0], [0, 0, 0], [0, 0, 0] ], [0, 0, 0]),
+            ([ [1, 2, -1],[3, -2, 4],[5, -9, 6]], [1,-9,-1]),
+        ])
+def test_daily_min(test_input, test_result):
+    """Test that min function works for an array of positive and negative integers."""
+    npt.assert_array_equal(daily_min(test_input), test_result)
