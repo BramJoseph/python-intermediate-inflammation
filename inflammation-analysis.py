@@ -2,8 +2,8 @@
 """Software for managing and analysing patients' inflammation data in our imaginary hospital."""
 
 import argparse
-
-from inflammation import models, views
+import os
+from inflammation import models, views, analysis
 
 
 def main(args):
@@ -27,8 +27,11 @@ def main(args):
         }
 
         views.visualize(view_data)
-
-
+    
+    data_dir = os.path.dirname(infiles[0])
+    data_source = analysis.CSVDataSource(data_dir=data_dir)
+    data = data_source.load_inflammation_data()
+    
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description="A basic patient inflammation data management system"
