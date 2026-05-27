@@ -25,7 +25,10 @@ def analyse_data(data_dir):
     means_by_day_matrix = np.stack(list(means_by_day))
 
     daily_standard_deviation = np.std(means_by_day_matrix, axis=0)
-
+    
+    print(daily_standard_deviation)
+    return daily_standard_deviation
+    
     graph_data = {
         'standard deviation by day': daily_standard_deviation,
     }
