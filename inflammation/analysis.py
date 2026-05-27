@@ -8,6 +8,10 @@ import argparse
 
 from inflammation import models, views
 
+def analyse_data(data_dir):
+    data_source = CSVDataSource(data_dir)
+    data = data_source.load_inflammation_data()
+
 def load_inflammation_data(data_dir):
     data_file_paths = glob.glob(os.path.join(data_dir, 'inflammation*.csv'))
     if len(data_file_paths) == 0:
